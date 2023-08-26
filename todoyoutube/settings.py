@@ -70,7 +70,7 @@ TEMPLATES = [
 TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
     'django.template.loaders.filesystem.Loader',
-)git
+)
 WSGI_APPLICATION = 'todoyoutube.wsgi.application'
 
 
@@ -79,17 +79,8 @@ WSGI_APPLICATION = 'todoyoutube.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-=======
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'todo_youtube',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '124.0.0.1',
-        'PORT':3306
->>>>>>> fa22277236e749ccd0f1ab6df0e6f7b483a2e786
     }
 }
 
