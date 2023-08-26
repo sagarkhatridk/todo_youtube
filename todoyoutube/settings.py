@@ -77,7 +77,8 @@ DATABASES = {
         'NAME': 'todo_youtube',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'HOST': '124.0.0.1',
+        'PORT':3306
     }
 }
 
