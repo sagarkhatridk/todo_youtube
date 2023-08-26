@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    input {
+        margin: 15px;
+    }
+</style>
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-4 mx-auto shadow">
+            <div class="alert alert-success">
+                <h2>
+                    Add Todo
+                </h2>
+            </div>
+            <div>
+                <form action="{% url 'addtodo' %}" method="post" class="mx-4">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <hr>
+                    <input class="btn btn-success mx-2" type="submit" value="submit">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="col">
+    <div class="border">
+        <div class="container">
+            {% if todos|length == 0%}
+            <h1>Add Todos</h1>
+            {% else %}
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for todo in todos %}
+                  <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{todo.title}}</td>
+                    <td>
+                        {% if todo.status == 'C' %}
+                        <i class="fa-solid fa-check"></i>
+                        {% else %}
+                        <i class="fa-regular fa-clock"></i>
+                        {% endif %}
+
+                    </td>
+                    <td>{{todo.priority}}</td>
+                    <td>
+                        <a href="{% url 'delete_todo' todo.pk %}" class="ml-0 mx-2"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        {% if todo.status == 'P' %}
+                        <a href="{% url 'updatetodo' pk=todo.pk status='C' %}" class="mx-2"><i class="fa-solid fa-check"></i></a>
+                        {% else %}
+                        <a href="{% url 'updatetodo' pk=todo.pk status='P' %}" class="mx-2"><i class="fa-regular fa-clock"></i></a>
+                        {% endif %}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

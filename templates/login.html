@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    input{
+        margin: 15px;
+    }
+</style>
+<div class="col-lg-4 mx-auto shadow">
+    <div class="alert alert-success">
+        <h2>
+            Login
+        </h2>
+    </div>
+    <div>
+        <form action="{% url 'login' %}" method="post" class="mx-4">
+            {% csrf_token %}
+            {{loginform.as_p}}
+            <hr>
+            <input class="btn btn-success mx-2" type="submit" value="submit" style="margin-bottom: 5px;">
+        </form>
+    </div>
+</div>
+{% endblock %}
